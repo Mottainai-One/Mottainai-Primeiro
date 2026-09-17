@@ -151,7 +151,7 @@ public class Store {
     }
 
     //toString
-    public String toString(){
+    public String toString() {
         return "------------- STORE -------------"+ "\n"+
                 "Store Code: "+ this.storeCode+"\n"+
                 "Email: "+ this.email+"\n"+

@@ -17,7 +17,7 @@ public class AdministrationDAO {
     }
 
     //METODO DE ATUALIZAÇÃO DOS REGISTROS NO BANCO
-    public boolean update(Administration administration){ // metodo de atualização no banco
+    public boolean update(Administration administration){
         try{
             String sql = "UPDATE administration SET email = ?, password = ? WHERE id = ?"; //comando de atualização dos registros no banco
 
@@ -36,7 +36,7 @@ public class AdministrationDAO {
         }
     }
     //METODO DE INSERÇÃO DOS REGISTROS NO BANCO
-    public boolean insert(Administration administration){ //metodo para inserir um registro no banco
+    public boolean insert(Administration administration){
         try{
             String sql = "INSERT INTO administration(email, password) VALUES (?,?)"; //comando sql
 
@@ -55,7 +55,7 @@ public class AdministrationDAO {
     }
 
     //METODO DE DELEÇÃO DOS REGISTROS NO BANCO
-    public boolean delete(int id){// metodo para apagar o registro no banco
+    public boolean delete(int id){
         try{
             String sql = "DELETE FROM administration WHERE id = ?";
 
@@ -74,7 +74,7 @@ public class AdministrationDAO {
     }
 
     //METODO DE SELEÇÃO DOS REGISTROS NO BANCO
-    public List<Administration> list(){ //metodo de listagem da tabela de administração
+    public List<Administration> list(){ 
 
         List<Administration> administrations = new ArrayList<>(); // Array que irá armazenar os dados e dar o retorno para o metodo
 

@@ -18,7 +18,7 @@ public class StoreDAO {
     }
 
     //MÉTODOS
-    public boolean insert(Store store){
+    public boolean insert(Store store) {
         try {
             String sql = "INSERT INTO store VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?, ?)";//comando sql
 
@@ -49,7 +49,7 @@ public class StoreDAO {
     }
 
     //METODO DE SELEÇÃO DOS REGISTROS NO BANCO
-    public List<Store> list(){
+    public List<Store> list() {
         List<Store> stores = new ArrayList<>();
 
         try {
@@ -59,7 +59,7 @@ public class StoreDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);//preparando o comando, passando o sql como parametro
             ResultSet resultSet = pstm.executeQuery();//aramazenando o resultado da minha consulta ao ser executado
 
-            while (resultSet.next()){//enquanto ainda tiver resultado
+            while (resultSet.next()) {//enquanto ainda tiver resultado
                 int storeCode = resultSet.getInt("storecode");// declaro uma variável para cada dado que tem no banco de acordo com o nome da coluna
                 String email = resultSet.getString("email");
                 String complement = resultSet.getString("complement");
@@ -87,7 +87,7 @@ public class StoreDAO {
     }
 
     //METODO DE ATUALIZAÇÃO DOS REGISTROS NO BANCO
-    public boolean update(Store store){
+    public boolean update(Store store) {
 
         try {
             String sql = "UPDATE store SET email = ?, complement = ?, department = ?, telephone = ?, status = ?, number = ?, street = ?, city = ?, neighborhood = ?, zipcode = ?, state = ?, description = ?, fkcompanycnpj = ? WHERE storecode = ?";//comando sql
@@ -118,7 +118,7 @@ public class StoreDAO {
     }
 
     //METODO DE DELEÇÃO DOS REGISTROS NO BANCO
-    public boolean delete(int storeCode){
+    public boolean delete(int storeCode) {
         try {
             String sql = "DELETE FROM store WHERE storecode = ?";//comando sql
 
@@ -135,7 +135,7 @@ public class StoreDAO {
     }
 
     //METODO QUE RETORNA UM OBJETO ESPECÍFICO
-    public Store find(int storeCode){
+    public Store find(int storeCode) {
         Store store = null;
         Company company = null;
 

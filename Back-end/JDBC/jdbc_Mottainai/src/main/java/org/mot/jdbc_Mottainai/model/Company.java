@@ -130,7 +130,7 @@ public class Company {
     }
 
     //toString
-    public String toString(){
+    public String toString() {
         return "----------- COMPANY ----------"+"\n"+
                 "CNPJ: "+ this.cnpj+"\n"+
                 "Name: "+ this.name+"\n"+

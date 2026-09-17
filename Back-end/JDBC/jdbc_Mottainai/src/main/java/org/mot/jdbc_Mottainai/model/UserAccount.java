@@ -105,7 +105,7 @@ public class UserAccount {
 
     //toString
     public String toString(){
-        return "----------- USER -----------"+ "\n"+
+        return "----------- USER ACCOUNT -----------"+ "\n"+
                 "ID: "+ this.id+ "\n"+
                 "User name: "+ this.userName+ "\n"+
                 "Email: "+ this.email+"\n"+
