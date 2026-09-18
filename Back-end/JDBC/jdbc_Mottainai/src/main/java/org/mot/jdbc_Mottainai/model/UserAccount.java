@@ -13,17 +13,17 @@ public class UserAccount {
     private LocalDateTime lastAcces; // no baco está timestamp
     private String status;
     private String position;
-    private Employee employeeCpf;
+    private Employee employee;
     //CONSTRUTOR
-    public UserAccount(String userName, String email, String password, Employee employeeCpf, String position) {
+    public UserAccount(String userName, String email, String password, Employee employee, String position) {
         this.userName = userName;
         this.email = email;
         this.password = password;
-        this.employeeCpf = employeeCpf;
+        this.employee = employee;
         this.position = position;
     }
     //SOBRECARGA
-    public UserAccount(int id, String userName, String email, String password, LocalDate registrationDate, LocalDateTime lastAcces, String status, String position, Employee employeeCpf) {
+    public UserAccount(int id, String userName, String email, String password, LocalDate registrationDate, LocalDateTime lastAcces, String status, String position, Employee employee) {
         this.id = id;
         this.userName = userName;
         this.email = email;
@@ -32,7 +32,7 @@ public class UserAccount {
         this.lastAcces = lastAcces;
         this.status = status;
         this.position = position;
-        this.employeeCpf = employeeCpf;
+        this.employee = employee;
     }
     //GETTERS
     public int getId() {
@@ -67,8 +67,8 @@ public class UserAccount {
         return position;
     }
 
-    public Employee getEmployeeCpf() {
-        return employeeCpf;
+    public Employee getEmployee() {
+        return employee;
     }
     //SETTERS
     public void setUserName(String userName) {
@@ -99,13 +99,13 @@ public class UserAccount {
         this.position = position;
     }
 
-    public void setEmployee(Employee employeeCpf) {
-        this.employeeCpf = employeeCpf;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     //toString
     public String toString(){
-        return "----------- USER -----------"+ "\n"+
+        return "----------- USER ACCOUNT -----------"+ "\n"+
                 "ID: "+ this.id+ "\n"+
                 "User name: "+ this.userName+ "\n"+
                 "Email: "+ this.email+"\n"+
@@ -114,7 +114,7 @@ public class UserAccount {
                 "Last Access: "+ this.lastAcces+ "\n"+
                 "Status: "+ this.status+ "\n"+
                 "Position: "+ this.position+ "\n"+
-                "Employee: "+ this.employeeCpf+ "\n"+
+                "Employee: "+ this.employee+ "\n"+
                 "----------------------------";
     }
 }

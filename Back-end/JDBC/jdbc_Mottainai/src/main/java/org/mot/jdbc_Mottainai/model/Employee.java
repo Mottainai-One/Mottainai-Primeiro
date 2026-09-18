@@ -56,7 +56,7 @@ public class Employee {
     }
 
     //toString
-    public String toString(){
+    public String toString() {
         return "------------- EMPLYOEE ------------"+"\n"+
                 "CPF: "+ this.cpf+"\n"+
                 "Name: "+ this.name+"\n"+

@@ -19,7 +19,7 @@ public class EmployeeDAO {
     }
 
     //METODO  DE LISTAGEM DOS REGISTROS
-    public List<Employee> list(){
+    public List<Employee> list() {
 
         Store store = null;
         List<Employee> employees = new ArrayList<>();
@@ -31,7 +31,7 @@ public class EmployeeDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);//preparando o comando, passando o sql como parametro
             ResultSet resultSet = pstm.executeQuery();//executando a consulta
 
-            while (resultSet.next()){//enquanto ainda tiver resultado...
+            while (resultSet.next()) {//enquanto ainda tiver resultado...
                 String cpf = resultSet.getString("cpf");//pego o valor armazenado em cada coluna pelo nome da coluna
                 String name = resultSet.getString("name");
                 String surname = resultSet.getString("surname");
@@ -53,7 +53,7 @@ public class EmployeeDAO {
     }
 
     //METODO DE INSERÇÃO DE REGISTRO NO BANCO
-    public boolean insert(Employee employee){
+    public boolean insert(Employee employee) {
 
         try{
             String sql = "INSERT INTO employee(cpf, name, surname, birthdate, employmentdate, storecode) VALUES (?,?,?,?,?,?)";//comando sql
@@ -76,7 +76,7 @@ public class EmployeeDAO {
     }
 
     //METODO DE ATUALIZAÇÃO DOS REGISTROS NO BANCO
-    public boolean update(Employee employee){
+    public boolean update(Employee employee) {
         try {
             String sql = "UPDATE employee SET name = ?, surname = ?, birthdate = ?, employmentdate = ?, storecode = ? WHERE cpf = ?"; //comando sql
 
@@ -98,7 +98,7 @@ public class EmployeeDAO {
     }
 
     //METODO QUE APAGA UM REGISTRO NO BANCO
-    public boolean delete(String cpf){
+    public boolean delete(String cpf) {
         try {
             String sql = "DELETE FROM employee WHERE cpf = ?";//comando sql
 
@@ -115,7 +115,7 @@ public class EmployeeDAO {
     }
 
     //METODO QUE RETORNA UM OBJETO ESPECÍFICO
-    public Employee find(String cpf){
+    public Employee find(String cpf) {
         Store store = null;
         Employee employee = null;
 
@@ -128,7 +128,7 @@ public class EmployeeDAO {
             pstm.setString(1, cpf);//a cada ocorrencia de "?" no comando eu passo uma informação do objeto para ser substituida
             ResultSet resultSet = pstm.executeQuery();//aramazenando o resultado da minha consulta ao ser executado
 
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 String cpf1 = resultSet.getString("cpf");// declaro uma variável para cada dado que tem no banco de acordo com o nome da coluna
                 String name = resultSet.getString("name");
                 String surname = resultSet.getString("surname");
