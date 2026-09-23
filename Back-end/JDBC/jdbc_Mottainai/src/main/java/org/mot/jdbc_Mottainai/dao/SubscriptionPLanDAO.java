@@ -19,7 +19,7 @@ public class SubscriptionPLanDAO {
     }
 
     //METODO DE INSERÇÃO DOS REGISTROS NO BANCO
-    public boolean insert(SubscriptionPlan subscriptionPlan){
+    public boolean insert(SubscriptionPlan subscriptionPlan) {
         try {
             String sql = "INSERT INTO subscriptionplan VALUES (?,?,?,?,?,?,?)";//comando sql
 
@@ -43,7 +43,7 @@ public class SubscriptionPLanDAO {
     }
 
     //METODO DE SELEÇÃO DOS REGISTROS NO BANCO
-    public List<SubscriptionPlan> list(){
+    public List<SubscriptionPlan> list() {
         Company company = null;
         List<SubscriptionPlan> subscriptionPlans = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class SubscriptionPLanDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);//preparando o comando, passando o sql como parametro
             ResultSet resultSet = pstm.executeQuery();//aramazenando o resultado da minha consulta ao ser executado
 
-            while (resultSet.next()){//enquanto tiver resultado ...
+            while (resultSet.next()) {//enquanto tiver resultado ...
                 int id = resultSet.getInt("id");// declaro uma variável para cada dado que tem no banco de acordo com o nome da coluna
                 String description = resultSet.getString("description");
                 String status = resultSet.getString("status");
@@ -77,7 +77,7 @@ public class SubscriptionPLanDAO {
     }
 
     //METODO DE ATUALIZAÇÃO DOS REGISTROS NO BANCO
-    public boolean update(SubscriptionPlan subscriptionPlan){
+    public boolean update(SubscriptionPlan subscriptionPlan) {
         try {
             String sql = "UPDATE subscriptionplan SET description = ?, status = ?, creationdate = ?, price = ?, storelimit = ?, companycnpj = ?";//comando sql
 
@@ -100,7 +100,7 @@ public class SubscriptionPLanDAO {
     }
 
     //METODO DE DELEÇÃO DOS REGISTROS NO BANCO
-    public boolean delete(int id){
+    public boolean delete(int id) {
         try {
             String sql = "DELETE FROM subscriptionplan WHERE id = ?";//comando sql
 

@@ -18,7 +18,7 @@ public class CompanyDAO {
     }
 
     //METODO DE LISTAGEM DOS REGISTROS
-    public List<Company> list(){
+    public List<Company> list() {
         List<Company> companies = new ArrayList<>();
 
         try {
@@ -27,7 +27,7 @@ public class CompanyDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);//preparando o comando sql
             ResultSet resultSet = pstm.executeQuery();//recenbendo os registros da query
 
-            while(resultSet.next()){ //enquanto ainda tiver resultado...
+            while(resultSet.next()) { //enquanto ainda tiver resultado...
                 String cnpj = resultSet.getString("cnpj");// declaro uma variável para cada dado que tem no banco de acordo com o nome da coluna
                 String name = resultSet.getString("name");
                 String complement = resultSet.getString("complement");
@@ -52,7 +52,7 @@ public class CompanyDAO {
     }
 
     //METODO DE INSERÇÃO NO BANCO
-    public boolean insert(Company company){
+    public boolean insert(Company company) {
         try {
             String sql = "INSERT INTO company VALUES (?,?,?,?,?,?,?,?,?,?,?,?)"; //comando sql
 
@@ -80,7 +80,7 @@ public class CompanyDAO {
     }
 
     //METODO DE ATUALIZAÇÃO NO BANCO
-    public boolean update(Company company){
+    public boolean update(Company company) {
         try {
             String sql = "UPDATE company SET name = ?, complement = ?, email = ?, registrationdate = ?, state = ?, street = ?, city = ?, neighborhood = ?, zipcode = ?, number = ?, description = ? WHERE cnpj = ?";//comando sql
 
@@ -109,7 +109,7 @@ public class CompanyDAO {
     }
 
     //METODO DE APAGAR OS REGISTROS NO BANCO
-    public boolean delete(String cnpj){
+    public boolean delete(String cnpj) {
         try {
             String sql = "DELETE FROM company WHERE cnpj = ?";//comando sql
 
@@ -126,7 +126,7 @@ public class CompanyDAO {
     }
 
     //METODO QUE RETORNA O OBJETO COMPANY
-    public Company find(String cnpj){
+    public Company find(String cnpj) {
         Company company = null;
         try {
             String sql = "SELECT * FROM company WHERE cnpj = ?";//comando sql
@@ -138,7 +138,7 @@ public class CompanyDAO {
 
             ResultSet resultSet = pstm.executeQuery();//recebendo o comando sql
 
-            if (resultSet.next()){//se ainda tiver resultado
+            if (resultSet.next()) {//se ainda tiver resultado
                 String cnpj1 = resultSet.getString("cnpj");
                 String name = resultSet.getString("name");
                 String complement = resultSet.getString("complement");

@@ -87,7 +87,7 @@ public class SubscriptionPlan {
     }
 
     //toString
-    public String toString(){
+    public String toString() {
         return "------------ SUBSCRIPTION PLAN ------------"+ "\n"+
                 "ID: "+ this.id+ "\n"+
                 "Description: "+ this.description+ "\n"+

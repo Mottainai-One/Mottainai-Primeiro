@@ -20,7 +20,7 @@ public class UserAccountDAO {
     }
 
     //METODO DE INSERÇÃO DOS REGISTROS NO BANCO
-    public boolean insert(UserAccount userAccount){
+    public boolean insert(UserAccount userAccount) {
         try {
             String sql = "INSERT INTO useraccount VALUES (?,?,?,?,?,?,?,?,?)";//comando sql
 
@@ -46,7 +46,7 @@ public class UserAccountDAO {
     }
 
     //METODO DE SELEÇÃO DOS REGISTROS NO BANCO
-    public List<UserAccount> list(){
+    public List<UserAccount> list() {
         List<UserAccount> userAccounts = new ArrayList<>();
         Employee employee = null;
         try {
@@ -56,7 +56,7 @@ public class UserAccountDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);//preparando o comando, passando o sql como parametro
             ResultSet resultSet = pstm.executeQuery();//aramazenando o resultado da minha consulta ao ser executado
 
-            while (resultSet.next()){//enquanto ainda tiver resultado ...
+            while (resultSet.next()) {//enquanto ainda tiver resultado ...
                 int id = resultSet.getInt("id");// declaro uma variável para cada dado que tem no banco de acordo com o nome da coluna
                 String userName = resultSet.getString("username");
                 String email = resultSet.getString("email");
@@ -80,7 +80,7 @@ public class UserAccountDAO {
     }
 
     //METODO DE ATUALIZAÇÃO DOS REGISTROS NO BANCO
-    public boolean update(UserAccount userAccount){
+    public boolean update(UserAccount userAccount) {
         try {
             String sql =  "UPDATE useraccount SET username = ?, email=?, password = ?, registrationdate = ?, lastaccess = ?, status= ?, position = ?, employeecpf = ? WHERE id = ?";//comando sql
 
@@ -106,7 +106,7 @@ public class UserAccountDAO {
     }
 
     //METODO DE DELEÇÃO DOS REGISTROS NO BANCO
-    public boolean delete(int id){
+    public boolean delete(int id) {
         try {
             String sql = "DELETE FROM useraccount WHERE id = ?";//comando sql
 
