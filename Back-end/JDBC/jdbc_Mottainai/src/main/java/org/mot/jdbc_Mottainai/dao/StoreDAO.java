@@ -39,9 +39,9 @@ public class StoreDAO {
             pstm.setString(12, store.getState());
             pstm.setString(13, store.getDescription());
             pstm.setObject(14, store.getCompany().getCnpj());
-            pstm.execute();//executando o comando sql
+            int alteration = pstm.executeUpdate();//executando o comando sql
 
-            return true;
+            return alteration > 0;
             //EXCEÇÃO
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -109,8 +109,8 @@ public class StoreDAO {
             pstm.setString(12, store.getDescription());
             pstm.setString(13, store.getCompany().getCnpj());
             pstm.setInt(14, store.getStoreCode());
-            pstm.execute();//executando o comando sql
-            return true;
+            int alteration = pstm.executeUpdate();//executando o comando sql
+            return alteration > 0;
             //EXCEÇÃO
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -126,8 +126,8 @@ public class StoreDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);//preparando o comando, passando o sql como parametro
 
             pstm.setInt(1, storeCode);//passo o parâmetro para a identificação do registro no comando sql
-            pstm.execute();//executando meu comando sql
-            return true;
+            int alteration = pstm.executeUpdate();//executando meu comando sql
+            return alteration > 0;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

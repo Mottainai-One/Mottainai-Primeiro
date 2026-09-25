@@ -35,10 +35,10 @@ public class UserAccountDAO {
             pstm.setObject(6, userAccount.getLastAcces());
             pstm.setString(7, userAccount.getStatus());
             pstm.setString(8, userAccount.getPosition());
-            pstm.setString(9, userAccount.getEmployeeCpf().getCpf());
-            pstm.execute();//executando o comando sql
+            pstm.setString(9, userAccount.getEmployee().getCpf());
+            int alteration = pstm.executeUpdate();//executando o comando sql
 
-            return true;
+            return alteration > 0;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -94,11 +94,12 @@ public class UserAccountDAO {
             pstm.setObject(5, userAccount.getLastAcces());
             pstm.setString(6, userAccount.getStatus());
             pstm.setString(7, userAccount.getPosition());
-            pstm.setString(8, userAccount.getEmployeeCpf().getCpf());
+            pstm.setString(8, userAccount.getEmployee().getCpf());
             pstm.setInt(9,userAccount.getId());
-            pstm.execute();//executando o comando sql
+            int alteration = pstm.executeUpdate();//executando o comando sql
 
-            return true;
+            return alteration > 0;
+
             //EXCEÇÃO
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -114,9 +115,9 @@ public class UserAccountDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);//preparando o comando, passando o sql como parametro
 
             pstm.setInt(1, id);//passo o parâmetro para a identificação do registro no comando sql
-            pstm.execute();//executando o comando sql
+            int alteration = pstm.executeUpdate();//executando o comando sql
 
-            return true;
+            return alteration > 0;
             //EXCEÇÃO
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -71,12 +71,13 @@ public class CompanyDAO {
             pstm.setString(10, company.getZipCode());
             pstm.setString(11, company.getNumber());
             pstm.setString(12, company.getDescription());
-            pstm.execute();//executando o comando sql no banco
 
+            int alteration = pstm.executeUpdate();
+
+            return alteration > 0;
         } catch (SQLException e) {//exceção
             throw new RuntimeException(e);
         }
-        return true;
     }
 
     //METODO DE ATUALIZAÇÃO NO BANCO
@@ -99,9 +100,10 @@ public class CompanyDAO {
             pstm.setString(10, company.getNumber());
             pstm.setString(11, company.getDescription());
             pstm.setString(12, company.getCnpj());
-            pstm.execute();//executando o comando sql no banco
 
-            return true;
+            int alteration = pstm.executeUpdate();//executando o comando sql no banco
+
+            return alteration > 0;
 
         } catch (SQLException e) {//exceção
             throw new RuntimeException(e);
@@ -117,8 +119,9 @@ public class CompanyDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);//preparando o comando sql
 
             pstm.setString(1, cnpj);//substituindo a ocorrência do "?" pelo cnpj passado como parâmetro
-            pstm.execute();//executando o comando
-            return true;
+            int alteration = pstm.executeUpdate();//executando o comando
+
+            return alteration > 0;
 
         } catch (SQLException e) {//exceção
             throw new RuntimeException(e);
