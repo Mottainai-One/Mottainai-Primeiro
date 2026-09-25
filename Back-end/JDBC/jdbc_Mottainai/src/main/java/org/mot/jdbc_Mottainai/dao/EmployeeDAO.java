@@ -47,7 +47,7 @@ public class EmployeeDAO {
             }
             //EXCEÇÃO
         } catch (SQLException sqlE) {
-            throw new RuntimeException(sqlE.getMessage());
+            throw new RuntimeException(sqlE);
         }
         return employees;
     }
@@ -67,8 +67,9 @@ public class EmployeeDAO {
             pstm.setObject(4, employee.getBirthDate());
             pstm.setObject(5,employee.getEmploymentDate());
             pstm.setObject(6, employee.getStore().getStoreCode());
-            pstm.execute();
-            return true;
+            int alteration = pstm.executeUpdate();
+
+            return alteration > 0;
 
         } catch (SQLException sqlE) {
             throw new RuntimeException(sqlE);
@@ -89,8 +90,8 @@ public class EmployeeDAO {
             pstm.setObject(4, employee.getEmploymentDate());
             pstm.setInt(5, employee.getStore().getStoreCode());
             pstm.setString(6, employee.getCpf());
-            pstm.execute();//executando meu comando sql
-            return true;
+            int alteration = pstm.executeUpdate();//executando meu comando sql
+            return alteration > 0;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -106,8 +107,9 @@ public class EmployeeDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);//preparando o comando, passando o sql como parametro
 
             pstm.setString(1, cpf);//a cada ocorrencia de "?" no comando eu passo uma informação do objeto para ser substituida
-            pstm.execute();//executando meu comando sql
-            return true;
+            int alteration = pstm.executeUpdate();//executando meu comando sql
+
+            return alteration > 0;
             //EXCEÇÃO
         } catch (SQLException e) {
             throw new RuntimeException(e);

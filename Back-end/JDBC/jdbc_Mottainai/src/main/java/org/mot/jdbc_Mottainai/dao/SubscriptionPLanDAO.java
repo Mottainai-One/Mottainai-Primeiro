@@ -33,9 +33,9 @@ public class SubscriptionPLanDAO {
             pstm.setDouble(5, subscriptionPlan.getPrice());
             pstm.setInt(6, subscriptionPlan.getStoreLimit());
             pstm.setString(7, subscriptionPlan.getCompany().getCnpj());
-            pstm.execute();//executando o comando sql
+           int alteration =  pstm.executeUpdate();//executando o comando sql
 
-            return true;
+            return alteration > 0;
             //EXCEÇÃO
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -90,9 +90,9 @@ public class SubscriptionPLanDAO {
             pstm.setDouble(4, subscriptionPlan.getPrice());
             pstm.setInt(5, subscriptionPlan.getStoreLimit());
             pstm.setObject(6, subscriptionPlan.getCompany());
-            pstm.execute();//executando o comando sql
+            int alteration = pstm.executeUpdate();//executando o comando sql
 
-            return true;
+            return alteration > 0;
             //EXCEÇÃO
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -108,9 +108,9 @@ public class SubscriptionPLanDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);//preparando o comando, passando o sql como parametro
 
             pstm.setInt(1, id);//passo o parâmetro para a identificação do registro no comando sql
-            pstm.execute();//executando o comando sql
+            int alteration = pstm.executeUpdate();//executando o comando sql
 
-            return true;
+            return alteration > 0;
             //EXCEÇÃO
         } catch (SQLException e) {
             throw new RuntimeException(e);

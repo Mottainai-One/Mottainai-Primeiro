@@ -27,12 +27,13 @@ public class AdministrationDAO {
             pstm.setString(1, administration.getEmail());// substituindo as ocorrências de "?" pelas informações do objeto
             pstm.setString(2, administration.getPassword());
             pstm.setInt(3, administration.getId());
-            pstm.execute();//executando o comando no banco
+            int alteration = pstm.executeUpdate();//executando o comando no banco
 
-            return true;
+            return alteration > 0;
 
         } catch (SQLException sqlE) {
-            throw new RuntimeException(sqlE.getMessage());
+            throw new RuntimeException(sqlE);
+
         }
     }
     //METODO DE INSERÇÃO DOS REGISTROS NO BANCO
@@ -45,12 +46,12 @@ public class AdministrationDAO {
 
             pstm.setString(1, administration.getEmail());// na primeira ocorrencia do "?" eu substituo por um valor do objeto passado como parâmetro
             pstm.setString(2, administration.getPassword());
-            pstm.execute();// executando o comando sql no banco após a substituição de valores
+            int alteration = pstm.executeUpdate();// executando o comando sql no banco após a substituição de valores
 
-            return true;
+            return alteration > 0;
 
         } catch (SQLException sqlE) {
-            throw new RuntimeException(sqlE.getMessage());
+            throw new RuntimeException(sqlE);
         }
     }
 
@@ -63,14 +64,13 @@ public class AdministrationDAO {
             PreparedStatement pstm = connection.prepareStatement(sql);// preparando a execução do comando sql
 
             pstm.setInt(1,id);// estou atualizando o comando sql, só na debaixo que após o comando sql for retificado aí roda o comando sql
-            pstm.execute(); // a linha de cima colocou o id parâmetro para a primeira ocorrência ao ser substituído o comando é executado e o cliente apagado
+            int alteration = pstm.executeUpdate(); // a linha de cima colocou o id parâmetro para a primeira ocorrência ao ser substituído o comando é executado e o cliente apagado
 
-            return true;
+            return alteration > 0;
 
         } catch (SQLException sqlE) {
-            throw new RuntimeException(sqlE.getMessage());
+            throw new RuntimeException(sqlE);
         }
-
     }
 
     //METODO DE SELEÇÃO DOS REGISTROS NO BANCO
@@ -94,10 +94,8 @@ public class AdministrationDAO {
                 administrations.add(new Administration(id, email, password)); //ao final, coloco cada variável como parâmetro para o construtor de Administration (para a criação do objeto) e já insiro o objeto na lista para o resultado do metodo
             }
         } catch (SQLException sqlE) { //EXCEÇÃO
-            throw new RuntimeException(sqlE.getMessage());//descrição do erro
+            throw new RuntimeException(sqlE);
         }
         return administrations;//retorno do metodo
     }
-
-
 }
